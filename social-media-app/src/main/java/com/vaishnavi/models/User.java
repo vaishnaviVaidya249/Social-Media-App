@@ -11,7 +11,7 @@ import jakarta.persistence.Table;
 @Entity
 @Table(name="users")
 public class User {
-	User(){
+	public User(){
 		
 	}
 	@Id
@@ -21,14 +21,14 @@ public class User {
 	private String lastName;
 	private String email;
 	private String password;
-	private List<Integer> followers=new ArrayList<>();
-	private List<Integer> following=new ArrayList<>();
+	private ArrayList<Integer> followers=new ArrayList<>();
+	private ArrayList<Integer> following=new ArrayList<>();
 	private String gender;
 	
 	
 	
-	public User(Integer id, String firstName, String lastName, String email, String password, List<Integer> followers,
-			List<Integer> following, String gender) {
+	 User(Integer id, String firstName, String lastName, String email, String password, ArrayList<Integer> followers,
+			ArrayList<Integer> following, String gender) {
 		super();
 		this.id = id;
 		this.firstName = firstName;
@@ -56,7 +56,7 @@ public class User {
 
 
 
-	public void setFollowers(List<Integer> followers) {
+	public void setFollowers(ArrayList<Integer> followers) {
 		this.followers = followers;
 	}
 
@@ -70,7 +70,7 @@ public class User {
 
 
 
-	public void setFollowing(List<Integer> following) {
+	public void setFollowing(ArrayList<Integer> following) {
 		this.following = following;
 	}
 
