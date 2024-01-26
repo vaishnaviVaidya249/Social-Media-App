@@ -5,6 +5,8 @@ import java.util.List;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
 
@@ -15,6 +17,7 @@ public class User {
 		
 	}
 	@Id
+	@GeneratedValue(strategy=GenerationType.AUTO)
 	private Integer id;
 //	@Column(name="my_name")
 	private String firstName;
@@ -24,11 +27,23 @@ public class User {
 	private ArrayList<Integer> followers=new ArrayList<>();
 	private ArrayList<Integer> following=new ArrayList<>();
 	private String gender;
+	private List<Post> savedPost=new ArrayList<>();
 	
 	
 	
-	 User(Integer id, String firstName, String lastName, String email, String password, ArrayList<Integer> followers,
-			ArrayList<Integer> following, String gender) {
+	 
+	
+	
+	
+	
+
+	
+
+
+
+
+	public User(Integer id, String firstName, String lastName, String email, String password,
+			ArrayList<Integer> followers, ArrayList<Integer> following, String gender, List<Post> savedPost) {
 		super();
 		this.id = id;
 		this.firstName = firstName;
@@ -38,13 +53,8 @@ public class User {
 		this.followers = followers;
 		this.following = following;
 		this.gender = gender;
+		this.savedPost = savedPost;
 	}
-	
-	
-	
-	
-
-	
 
 
 
@@ -159,6 +169,33 @@ public class User {
 	public void setId(Integer id) {
 		this.id = id;
 	}
+
+
+
+
+
+
+
+
+
+
+	public List<Post> getSavedPost() {
+		return savedPost;
+	}
+
+
+
+
+
+
+
+
+
+
+	public void setSavedPost(List<Post> savedPost) {
+		this.savedPost = savedPost;
+	}
+	
 
 
 

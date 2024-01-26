@@ -1,65 +1,114 @@
 package com.vaishnavi.models;
 
+import java.time.LocalDateTime;
+import java.util.ArrayList;
+import java.util.List;
+
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+
+@Entity
 public class Post {
-	private String content;
-	private int timeStamp;
-	private String author;
-	private int likes;
-	private String comment;
-	private String location;
-	private int shares;
-	public Post(String content, int timeStamp, String author, int likes, String comment, String location, int shares) {
+	
+	@Id
+	@GeneratedValue(strategy=GenerationType.AUTO)
+	private Integer id;
+    private String caption;
+	
+	private String image;
+	
+	private String video;
+	
+	private User user;
+	
+	private  List<User> liked=new ArrayList<>();
+	
+	private LocalDateTime createdAt;
+	
+	public Post() {
+		
+	}
+	
+	
+	public Post(Integer id, String caption, String image, String video, User user, List<User> liked,
+			LocalDateTime createdAt) {
 		super();
-		this.content = content;
-		this.timeStamp = timeStamp;
-		this.author = author;
-		this.likes = likes;
-		this.comment = comment;
-		this.location = location;
-		this.shares = shares;
+		this.id = id;
+		this.caption = caption;
+		this.image = image;
+		this.video = video;
+		this.user = user;
+		this.liked = liked;
+		this.createdAt = createdAt;
 	}
-	public String getContent() {
-		return content;
+
+
+	public List<User> getLiked() {
+		return liked;
 	}
-	public void setContent(String content) {
-		this.content = content;
+
+	public void setLiked(List<User> liked) {
+		this.liked = liked;
 	}
-	public int getTimeStamp() {
-		return timeStamp;
+
+	
+	
+	public Integer getId() {
+		return id;
 	}
-	public void setTimeStamp(int timeStamp) {
-		this.timeStamp = timeStamp;
+
+	public void setId(Integer id) {
+		this.id = id;
 	}
-	public String getAuthor() {
-		return author;
+
+	
+
+	public String getCaption() {
+		return caption;
 	}
-	public void setAuthor(String author) {
-		this.author = author;
+
+	public void setCaption(String caption) {
+		this.caption = caption;
 	}
-	public int getLikes() {
-		return likes;
+
+	public String getImage() {
+		return image;
 	}
-	public void setLikes(int likes) {
-		this.likes = likes;
+
+	public void setImage(String image) {
+		this.image = image;
 	}
-	public String getComment() {
-		return comment;
+
+	public String getVideo() {
+		return video;
 	}
-	public void setComment(String comment) {
-		this.comment = comment;
+
+	public void setVideo(String video) {
+		this.video = video;
 	}
-	public String getLocation() {
-		return location;
+
+	public User getUser() {
+		return user;
 	}
-	public void setLocation(String location) {
-		this.location = location;
+
+	public void setUser(User user) {
+		this.user = user;
 	}
-	public int getShares() {
-		return shares;
+
+	public LocalDateTime getCreatedAt() {
+		return createdAt;
 	}
-	public void setShares(int shares) {
-		this.shares = shares;
+
+	public void setCreatedAt(LocalDateTime createdAt) {
+		this.createdAt = createdAt;
 	}
+
+	
+	
+	
+	
 	
 	
 
