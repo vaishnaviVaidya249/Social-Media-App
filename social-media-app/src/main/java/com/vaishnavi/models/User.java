@@ -3,11 +3,14 @@ package com.vaishnavi.models;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.ManyToMany;
 import jakarta.persistence.Table;
 
 @Entity
@@ -19,7 +22,7 @@ public class User {
 	@Id
 	@GeneratedValue(strategy=GenerationType.AUTO)
 	private Integer id;
-//	@Column(name="my_name")
+
 	private String firstName;
 	private String lastName;
 	private String email;
@@ -27,11 +30,13 @@ public class User {
 	private ArrayList<Integer> followers=new ArrayList<>();
 	private ArrayList<Integer> following=new ArrayList<>();
 	private String gender;
+	@JsonIgnore
+	@ManyToMany
 	private List<Post> savedPost=new ArrayList<>();
 	
 	
 	
-	 
+	 	
 	
 	
 	

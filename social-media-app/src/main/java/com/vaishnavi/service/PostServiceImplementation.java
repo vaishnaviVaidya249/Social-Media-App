@@ -32,10 +32,10 @@ public class PostServiceImplementation implements PostService{
 		Post newPost=new Post();
 		newPost.setCaption(post.getCaption());
 		newPost.setImage(post.getImage());
-		//newPost.setCreatedAt(new LocalDateTime.now());
+		newPost.setCreatedAt(LocalDateTime.now());
 		newPost.setVideo(post.getVideo());
 		newPost.setUser(user);
-		return null;
+		return postRepository.save(newPost);
 	}
 
 	@Override
@@ -77,11 +77,11 @@ public class PostServiceImplementation implements PostService{
 		User user=userService.findUserById(userId);
 		
 		if(user.getSavedPost().contains(post)) {
-			user.getSavedPost().add(post);
+			user.getSavedPost().remove(post);
 			
-		}else {
-			user.getSavedPost().add(post);
 		}
+		else user.getSavedPost().add(post);
+		userRepository.save(user);
 		
 		return post;
 	}
